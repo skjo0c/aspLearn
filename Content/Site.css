@@ -1,0 +1,118 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-image: url('/Images/loginbg.jpg');
+    background-size: cover;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    color: white;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.welcome_text {
+    font-family: 'Pacifico', cursive;
+    color: white;
+    font-size: 50px;
+}
+
+.greet_text {
+    font-family: 'Pacifico', cursive;
+    color: black;
+    font-size: 50px;
+}
+
+.login_form {
+    border: solid;
+    border-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    float: right;
+    background: #637666;
+}
+
+.logintxt {
+    font-family: 'Pacifico', cursive;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    margin: 10px 0 20px 0;
+}
+
+.form-input {
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 300px;
+    height: 40px;
+    text-align: center;
+}
+
+.loginbtn {
+    margin: 10px 0 10px 0;
+    border-radius: 5px;
+    width: 280px;
+}
+
+.signupbtn {
+    margin: 10px 0 10px 0;
+    border-radius: 5px;
+    width: 280px;
+}
+
+.hello_page {
+    border: solid;
+    border-radius: 10px;
+    border-color: white;
+    background: #637666;
+    color: white;
+    text-align: center;
+}
+
+/*.ideaForm {
+    border: solid;
+    border-radius: 10px;
+    border-color: black;
+    width: 300px;
+    padding: 10px 20px 10px 20px;
+}*/
+
+.ideamodal{
+    padding: 20px;
+}
+
+.ideaModel_item{
+    margin-bottom: 20px;
+    max-width: none;
+}
+
+.ideamodal_footer{
+    padding: 10px 0 0 0;
+}
+
+.ideaViewer{
+    border: solid;
+    border-radius: 5px;
+}
+
+.idea_Title{
+    font-size: 40px;
+}
+
+.idea_Description {
+    font-size: 20px;
+}

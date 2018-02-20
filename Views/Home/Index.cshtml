@@ -1,0 +1,36 @@
+﻿@model Idea.Models.User
+
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="welcome_text">Welcome</div>
+        <hr />
+    </div>
+
+    <div class="login_form">
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+        {
+
+            <p class="logintxt">Login</p>
+
+            @Html.LabelFor(m => m.username)
+            @Html.EditorFor(m => m.username, new { htmlAttributes = new { @class = "form-control"} })
+            @Html.ValidationMessageFor(m => m.username)
+
+            @Html.LabelFor(m => m.password)
+            @Html.EditorFor(m => m.password, new { htmlAttributes = new { @class = "form-control"} })
+            @Html.ValidationMessageFor(m => m.password)
+
+            <button type="submit" class="btn btn-primary loginbtn">Log In</button><br />
+            <a href='@Url.Action("SignUp", "Home")' class="btn btn-primary signupbtn">Sign Up</a>
+        }
+    </div>
+
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

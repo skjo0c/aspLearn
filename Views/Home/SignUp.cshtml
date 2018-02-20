@@ -1,0 +1,44 @@
+﻿@model Idea.Models.User
+
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="welcome_text">Welcome</div>
+    </div>
+
+    <div class="login_form">
+        @using (Html.BeginForm("SignUp", "Home", FormMethod.Post))
+    {
+
+        <p class="logintxt">Sign Up</p>
+        @Html.LabelFor(m => m.firstname)
+        @Html.EditorFor(m => m.firstname, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.firstname)
+
+        @Html.LabelFor(m => m.lastname)
+        @Html.EditorFor(m => m.lastname, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.lastname)
+
+        @Html.LabelFor(m => m.email)
+        @Html.EditorFor(m => m.email, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.email)
+
+        @Html.LabelFor(m => m.username)
+        @Html.EditorFor(m => m.username, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.username)
+
+        @Html.LabelFor(m => m.password)
+        @Html.EditorFor(m => m.password, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.password)
+
+        <button type="submit" class="btn btn-primary signupbtn">Sign Up</button>
+        <p>Already got account?</p>
+        <a href='@Url.Action("Index", "Home")' class="btn btn-primary loginbtn">Login</a>
+}
+    </div>
+
+</div>
