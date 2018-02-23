@@ -29,7 +29,7 @@
                             @Html.ValidationMessageFor(m => m.Idea1.Title)
 
                             @Html.LabelFor(m => m.Idea1.Description)
-                            @Html.TextAreaFor(m => m.Idea1.Description, new { @class = "form-control ideaModel_item", @rows = "10" } )
+                            @Html.TextAreaFor(m => m.Idea1.Description, new { @class = "form-control ideaModel_item", @rows = "10" })
                             @Html.ValidationMessageFor(m => m.Idea1.Description)
 
                             @Html.HiddenFor(m => m.Idea1.UserID, new { Value = @Session["UserID"] })
@@ -42,19 +42,23 @@
                 </div>
             }
         </div>
+
+        <div id="demo">
+            <p onclick="myIdea(@Session["UserId"])"><b> Show my ideas </b></p>
+        </div>        
     </div>
 
     <div class="col-md-8">
         <div class="ideaViewer">
-        @foreach (var c in Model.AllIdea)
-        {
-            <div class="idea_Title">
-                @c.Title
-            </div>
-            <div class="idea_Description">
-                @c.Description
-            </div>
-         }
+            @foreach (var c in Model.AllIdea)
+            {
+                <div class="idea_Title">
+                    @c.Title
+                </div>
+                <div class="idea_Description">
+                    @c.Description
+                </div>
+            }
         </div>
     </div>
 </div>

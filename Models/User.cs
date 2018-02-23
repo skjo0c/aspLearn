@@ -36,5 +36,6 @@ namespace Idea.Models
         public string password { get; set; }
         public Ideator Idea1 { get; set; }
         public List<Ideator> AllIdea { get; set; }
+        public List <Ideator> UserIdea { get; set; }
     }
 }

@@ -59,8 +59,6 @@ namespace Idea.Controllers
             
         }
 
-
-
         public ActionResult SignUp()
         {
             return View();
@@ -88,4 +86,4 @@ namespace Idea.Controllers
             return View("Index");
         }
     }
-}
+}   

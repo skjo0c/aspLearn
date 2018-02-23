@@ -18,11 +18,11 @@
             <p class="logintxt">Login</p>
 
             @Html.LabelFor(m => m.username)
-            @Html.EditorFor(m => m.username, new { htmlAttributes = new { @class = "form-control"} })
+            @Html.EditorFor(m => m.username, new { htmlAttributes = new { @class = "form-control", Value = "ursa"} })
             @Html.ValidationMessageFor(m => m.username)
 
             @Html.LabelFor(m => m.password)
-            @Html.EditorFor(m => m.password, new { htmlAttributes = new { @class = "form-control"} })
+            @Html.EditorFor(m => m.password, new { htmlAttributes = new { @class = "form-control", Value = "asdfjy2u"} })
             @Html.ValidationMessageFor(m => m.password)
 
             <button type="submit" class="btn btn-primary loginbtn">Log In</button><br />
