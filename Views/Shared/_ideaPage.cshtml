@@ -22,7 +22,7 @@
                 @if (@Session["Username"] != null)
                 {
                     <li class="sign_out">
-                        <a href="/"><span class="glyphicon glyphicon-user"></span> Sign Out</a>
+                        <a href="@Url.Action("Signout", "Home")"><span class="glyphicon glyphicon-user"></span> Sign Out</a>
                     </li>
                 }
             </ul>

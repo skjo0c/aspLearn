@@ -6,10 +6,11 @@
         data: { id: obj.userid },
         url: "Ideas/Index",
         success: function (result) {
-            debugger;
+            //debugger;
             console.log(result.UserIdea[0]);
             console.log(result);
             var t = "";
+            var d = "";
             var s = "";
                    //$(".ideaViewer").html(result.UserIdea[0].Title);
             for (var i = 0; i < result.UserIdea.length; i++) {
@@ -18,7 +19,11 @@
                 //console.log(result.UserIdea[i]);
                 t = result.UserIdea[i].Title;
                 d = result.UserIdea[i].Description;
-                s += '<div class = "idea_Title">' + t + '</div>' + '<div class = "idea_Description">' + d + '</div>' + '<button class="btn btn-danger del" onclick="delIdea('+id+')"> Delete </button><br />';       
+                s += '<div class = "idea_Title">' + t + '</div>' +
+                    '<div class = "idea_Description">' + d + '</div>' +
+                    '<button class="btn btn-danger del" onclick="delIdea(' + id + ')"> Delete </button>' +
+                    '<button class="btn btn-info update btnUpdate" onclick="upIdea(' + id + ')"> Update </button>' +
+                    '<hr />';
                 $(".ideaViewer").html(s);
             }
         }
@@ -26,7 +31,7 @@
 }
 
 function delIdea(id) {
-    var obj = { ideaID : id }
+    var obj = { ideaID: id}
     $.ajax({
         method: "post",
         datatype: "json",
@@ -36,4 +41,14 @@ function delIdea(id) {
             window.location = "/Ideas";
         }
     });
+}
+
+function upIdea(id) {
+    document.getElementById('updateModal').style.display = "block";
+}
+
+window.onclick = function(event) {
+    if (event.target == document.getElementById('updateModal')) {
+        document.getElementById('updateModal').style.display = "none";
+    }
 }

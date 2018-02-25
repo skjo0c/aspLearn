@@ -85,5 +85,11 @@ namespace Idea.Controllers
             //string username = frm.Keys[0].ToString();
             return View("Index");
         }
+
+        public ActionResult Signout()
+        {
+            Session.Abandon();
+            return View("Index");
+        }
     }
 }   

@@ -47,14 +47,6 @@ namespace Idea.Controllers
             return View(um);
         }
 
-        //[HttpPost]
-        //public JsonResult Index(int id)
-        //{
-        //    //return Json("success");
-        //    var userIdeas = { Title: "Chelsea vs Barcelona", Description: "They played 1-1 draw as Barca had more possession but Chelsea had more shots on target." };
-        //    return Json();
-        //}
-
         [HttpPost]
         public JsonResult Index(int id)
         {
@@ -92,28 +84,6 @@ namespace Idea.Controllers
         }
 
         [HttpPost]
-        public ActionResult Delete(int id)
-        {
-            string conStr = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString.ToString();
-            using (SqlConnection con = new SqlConnection(conStr))
-            {
-                try
-                {
-                    con.Open();
-                    SqlCommand cmd = new SqlCommand("usp_deleteIdeas", con);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("ideaID", id);
-                    cmd.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }            
-            }
-            return RedirectToAction("Index", "Ideas");
-        }
-
-        [HttpPost]
         public ActionResult createIdea(User idea)
         {
             string conStr = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString.ToString();
@@ -130,6 +100,45 @@ namespace Idea.Controllers
             }
             return RedirectToAction("Index", "Ideas");
             //return View("Index");
+        }
+
+        [HttpPost]
+        public ActionResult Update(User idea)
+        {
+            string conStr = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString.ToString();
+            using(SqlConnection con = new SqlConnection(conStr))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("usp_updateIdea", con);
+                cmd.Parameters.AddWithValue("ideaID", idea.Idea1.IdeasID);
+                cmd.Parameters.AddWithValue("uptitle", idea.Idea1.Title);
+                cmd.Parameters.AddWithValue("updescription", idea.Idea1.Description);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            return RedirectToAction("Index", "Ideas");
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            string conStr = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString.ToString();
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("usp_deleteIdeas", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("ideaID", id);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+            return RedirectToAction("Index", "Ideas");
         }
     }
 }
