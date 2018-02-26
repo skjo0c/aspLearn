@@ -44,11 +44,18 @@ function delIdea(id) {
 }
 
 function upIdea(id) {
-    document.getElementById('updateModal').style.display = "block";
-}
-
-window.onclick = function(event) {
-    if (event.target == document.getElementById('updateModal')) {
-        document.getElementById('updateModal').style.display = "none";
-    }
+    var obj = { ideaID: id }
+    $.ajax({
+        method: "post",
+        datatype: "json",
+        data: { id: obj.ideaID },
+        url: "Ideas/GetIdea",
+        success: function (result) {
+            debugger;
+            $("#myupdateModal").html(result).modal({
+                'show': true,
+                //'backdrop': 'static'
+            });
+        }
+    });
 }

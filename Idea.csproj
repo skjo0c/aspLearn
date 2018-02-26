@@ -194,6 +194,7 @@
     <Content Include="Views\Home\AfterLogin.cshtml" />
     <Content Include="Views\Ideas\Index.cshtml" />
     <Content Include="Views\Shared\_ideaPage.cshtml" />
+    <Content Include="Views\Ideas\UpdateIdea.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

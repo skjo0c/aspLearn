@@ -67,29 +67,10 @@
     </div>
 
     @* modal for update button *@
-
-    @using (Html.BeginForm("createIdea", "Ideas", FormMethod.Post))
+    @using (Html.BeginForm("Update", "Ideas", FormMethod.Post))
     {
-
-        <div id="updateModal" class="upModal">
-
-            <!-- Modal content -->
-            <div class="modal-content ideamodal">
-                @Html.LabelFor(m => m.Idea1.Title)
-                @Html.EditorFor(m => m.Idea1.Title, new { htmlAttributes = new { @class = "form-control ideaModel_item" } })
-                @Html.ValidationMessageFor(m => m.Idea1.Title)
-
-                @Html.LabelFor(m => m.Idea1.Description)
-                @Html.TextAreaFor(m => m.Idea1.Description, new { @class = "form-control ideaModel_item", @rows = "10" })
-                @Html.ValidationMessageFor(m => m.Idea1.Description)
-
-                @Html.HiddenFor(m => m.Idea1.UserID, new { Value = @Session["UserID"] })
-                <div class="modal-footer ideamodal_footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary addIdea">Add Idea</button>
-                </div>
-            </div>
-
+        <div class="modal" id="myupdateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         </div>
     }
+
 </div>

@@ -1,0 +1,28 @@
+﻿@model Idea.Models.User
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-body updateModal">
+            @Html.LabelFor(m => m.Idea1.Title)
+            @Html.EditorFor(m => m.Idea1.Title, new { htmlAttributes = new { @class = "form-control ideaModel_item", Value = @Model.UserIdea[0].Title } })
+            @Html.ValidationMessageFor(m => m.Idea1.Title)
+
+            @Html.LabelFor(m => m.Idea1.Description)
+            @Html.TextAreaFor(m => m.Idea1.Description, new { @class = "form-control ideaModel_item", @rows = "10", Value = @Model.UserIdea[0].Description })
+            @Html.ValidationMessageFor(m => m.Idea1.Description)
+
+            @Html.HiddenFor(m => m.Idea1.IdeasID, new { Value = @Model.UserIdea[0].IdeasID })
+        </div>
+        <div class="modal-footer ideamodal_footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary addIdea">Update Idea</button>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        debugger;
+        $("#Idea1_Description").html("@Model.UserIdea[0].Description");
+    });
+</script>

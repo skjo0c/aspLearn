@@ -110,9 +110,10 @@ namespace Idea.Controllers
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand("usp_updateIdea", con);
-                cmd.Parameters.AddWithValue("ideaID", idea.Idea1.IdeasID);
-                cmd.Parameters.AddWithValue("uptitle", idea.Idea1.Title);
-                cmd.Parameters.AddWithValue("updescription", idea.Idea1.Description);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ID", idea.Idea1.IdeasID);
+                cmd.Parameters.AddWithValue("@uptitle", idea.Idea1.Title);
+                cmd.Parameters.AddWithValue("@updescription", idea.Idea1.Description);
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
@@ -139,6 +140,38 @@ namespace Idea.Controllers
                 }
             }
             return RedirectToAction("Index", "Ideas");
+        }
+
+        [HttpPost]
+        public PartialViewResult GetIdea(int id)
+        {
+            string conStr = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString.ToString();
+            User um = new User();
+            List<Ideator> useridea = new List<Ideator>();
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("usp_selectIdea", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("ideaID", id);
+                    DataSet ds = new DataSet();
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(ds);
+                    um.UserIdea = new List<Ideator>();
+                    Ideator idea = new Ideator();
+                    idea.Title = ds.Tables[0].Rows[0]["Title"].ToString();
+                    idea.Description = ds.Tables[0].Rows[0]["Description"].ToString();
+                    idea.IdeasID = Convert.ToInt32(ds.Tables[0].Rows[0]["IdeasID"]);
+                    um.UserIdea.Add(idea);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+            return PartialView("UpdateIdea", um);
         }
     }
 }
