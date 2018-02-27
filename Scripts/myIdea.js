@@ -31,16 +31,23 @@
 }
 
 function delIdea(id) {
-    var obj = { ideaID: id}
-    $.ajax({
-        method: "post",
-        datatype: "json",
-        data: { id: obj.ideaID },
-        url: "Ideas/Delete",
-        success: function (result) {
-            window.location = "/Ideas";
-        }
-    });
+    var obj = { ideaID: id }
+    var confirmation = confirm("Delete this idea?");
+    if (confirmation == true) {
+        $.ajax({
+            method: "post",
+            datatype: "json",
+            data: { id: obj.ideaID },
+            url: "Ideas/Delete",
+            success: function (result) {
+                window.location = "/Ideas";
+            }
+        });
+    }
+    else {
+        window.location = "/Ideas";
+    }
+    
 }
 
 function upIdea(id) {
